@@ -6,47 +6,27 @@ import { DataService } from '../data.service';
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.scss'],
   template:`
+<div class="container">
 <h3>This is Student Data</h3>
-{{studentwaData}}
-{{student}}
-<input type="text" [(ngModel)]="name"/>
-{{name}}
-<button type="submit" value="Enter" ngClick="getStudents()" >Enter</button>
-{{student}}
   <ul>
-  <li *ngFor="let studentwa of student">{{studentwa}}</li>
+  <li *ngFor="let students of student">{{students}}</li>
   </ul>
+  </div>
   `
 })
 export class StudentComponent implements OnInit {
-
+  student = [];
   constructor(private _dataService: DataService) { }
-  // DataService.getStudent(){
-
-// }
-
-  public student;
-  public studentData = [];
-
-
 
   ngOnInit() {
     this.getStudents();
   }
 
   getStudents() {
-    var studentwaData;
-    // var studentData;
     this._dataService.getStudent().subscribe(function (data) {
       console.log("data")
       console.log(data)
-        studentwaData = data
-
-      // this.studentData.push(data[0]);
       this.student = data;
-
-      // this._dataService.changeGoal(this.studentData);
-      console.log(this.studentData)
       console.log(this.student)
     })
     // console.log(response)
@@ -59,8 +39,7 @@ export class StudentComponent implements OnInit {
       err => console.error(err),
       // the third argument is a function which runs on completion
       () => console.log('done loading foods')
-    );
-       console.log(data)*/
+    );*/
   }
 
 }
